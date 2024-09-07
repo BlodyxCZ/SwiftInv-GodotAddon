@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryItem.gd" id="1_ocklp"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8v1tf"]
-size = Vector2(100, 100)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6cbd"]
+size = Vector2(50, 50)
 
 [resource]
 script = ExtResource("1_ocklp")
-name = "Item1"
+name = "Item2"
 description = "It's an item"
-texture = SubResource("PlaceholderTexture2D_8v1tf")
+texture = SubResource("PlaceholderTexture2D_m6cbd")
 amount = 1
 max_stack = 24

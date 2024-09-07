@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryItem.gd" id="1_a70kr"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8v1tf"]
-size = Vector2(100, 100)
+size = Vector2(75, 75)
 
 [resource]
 script = ExtResource("1_a70kr")

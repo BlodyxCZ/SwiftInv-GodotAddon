@@ -1,19 +1,105 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccp02sr4bembp"]
+[gd_scene load_steps=6 format=3 uid="uid://ccp02sr4bembp"]
 
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryContainer.gd" id="1_ri6sr"]
+[ext_resource type="PackedScene" uid="uid://d2inajmo8ahsj" path="res://addons/SwiftInv/Example/example_slot.tscn" id="2_t8xc0"]
+[ext_resource type="Resource" uid="uid://bknu0i41e76wj" path="res://addons/SwiftInv/Example/inventory1.tres" id="3_3q34i"]
+[ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventorySlot.gd" id="4_pj134"]
+[ext_resource type="Resource" uid="uid://cdex1y3gbw80r" path="res://addons/SwiftInv/Example/inventory2.tres" id="5_5mgm4"]
 
-[node name="ExampleScene" type="Control"]
+[node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="InventoryContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 351.0
-offset_top = 132.0
-offset_right = 730.0
-offset_bottom = 404.0
+offset_left = 100.0
+offset_top = 170.0
+offset_right = 479.0
+offset_bottom = 442.0
+columns = 3
 script = ExtResource("1_ri6sr")
+slot_scene = ExtResource("2_t8xc0")
+inventory = ExtResource("3_3q34i")
+
+[node name="Slot0" type="TextureRect" parent="InventoryContainer" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot1" type="TextureRect" parent="InventoryContainer" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot2" type="TextureRect" parent="InventoryContainer" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot3" type="TextureRect" parent="InventoryContainer" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot4" type="TextureRect" parent="InventoryContainer" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot5" type="TextureRect" parent="InventoryContainer" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="InventoryContainer2" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 175.0
+offset_right = 959.0
+offset_bottom = 483.0
+columns = 3
+script = ExtResource("1_ri6sr")
+slot_scene = ExtResource("2_t8xc0")
+inventory = ExtResource("5_5mgm4")
+
+[node name="Slot0" type="TextureRect" parent="InventoryContainer2" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot1" type="TextureRect" parent="InventoryContainer2" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot2" type="TextureRect" parent="InventoryContainer2" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot3" type="TextureRect" parent="InventoryContainer2" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot4" type="TextureRect" parent="InventoryContainer2" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
+
+[node name="Slot5" type="TextureRect" parent="InventoryContainer2" instance=ExtResource("2_t8xc0")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_pj134")
