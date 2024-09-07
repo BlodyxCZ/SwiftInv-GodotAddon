@@ -1,4 +1,4 @@
-@tool
+@tool @icon("res://addons/SwiftInv/Icons/Inventory.svg")
 class_name Inventory extends Resource
 
 

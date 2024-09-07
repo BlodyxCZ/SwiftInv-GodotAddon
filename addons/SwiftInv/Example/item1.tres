@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://u1cay0b5vr1k"]
+
+[ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryItem.gd" id="1_a70kr"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8v1tf"]
+size = Vector2(100, 100)
+
+[resource]
+script = ExtResource("1_a70kr")
+name = "Item1"
+description = "It's an item"
+texture = SubResource("PlaceholderTexture2D_8v1tf")
+amount = 1
+max_stack = 24
