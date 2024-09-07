@@ -1,29 +1,35 @@
 @tool @icon("res://addons/SwiftInv/Icons/InventorySlot.svg")
 class_name InventorySlot extends TextureRect
 
+
 @export_group("Properties")
 ## Size in pixels of drag preview
 @export var drag_preview_size: int = 30
 @export var auto_update: bool = true
+@export var hover_time: float = 2.0
 
 @export_group("Nodes")
 ## Displays [member InventoryItem.amount]
 @export var amount_label: Label
 
+## The Slots order in [InventoryContainer]
 var index: int:
+	set(value):
+		pass
 	get():
 		return get_index()
 
-var item: InventoryItem:
+@export_group("")
+## Directly changes and displays [InventoryItem] in it's parents [Inventory] [br]
+## (PS: this variables SetGet sometimes throws this error, don't bother with it XD): [br]
+## [color=bf3030]   editor/editor_data.cpp:1214 - Condition "!p_node->is_inside_tree()" is true.
+@export var item: InventoryItem:
 	set(value):
-		get_parent().inventory.items[index] = value
+		if get_parent() is InventoryContainer:
+			get_parent().inventory.items[index] = value
 	get():
+		if not get_parent() is InventoryContainer: return null
 		return get_parent().inventory.items[index]
-
-
-func _process(_delta) -> void:
-	if Engine.is_editor_hint(): return
-	if auto_update: update_slot()
 
 
 ## Updates [member texture_rect] and [member amount_label] [br]
@@ -60,8 +66,12 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return data
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	if data is not Dictionary: return false
-	return true
+	if Engine.is_editor_hint():
+		print(data)
+		return false
+	else:
+		if data is not Dictionary: return false
+		return true
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	if not item or not data["base_item"].name == item.name or item.amount == item.max_stack:

@@ -8,7 +8,7 @@ size = Vector2(50, 50)
 [resource]
 script = ExtResource("1_ocklp")
 name = "Item2"
-description = "It's an item"
+description = "Stackable Item"
 texture = SubResource("PlaceholderTexture2D_m6cbd")
-amount = 1
+amount = 7
 max_stack = 24

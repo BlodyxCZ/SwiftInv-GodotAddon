@@ -4,17 +4,21 @@ class_name InventoryContainer extends GridContainer
 
 @export var autosafe: bool = true
 
-@export var slot_scene: PackedScene
-
 @export var inventory: Inventory:
 	set(value):
 		inventory = value
 		inventory.changed.connect(_on_inventory_changed)
+		
+@export var slot_scene: PackedScene
+@export var info_node: InventoryInfo
 
 
 func _process(_delta: float) -> void:
+	for slot: InventorySlot in get_children():
+		if slot.auto_update: slot.update_slot()
 	if Engine.is_editor_hint(): return
-	if autosafe: ResourceSaver.save(inventory)
+	if autosafe:
+		ResourceSaver.save(inventory)
 
 
 func _on_inventory_changed() -> void:
@@ -29,6 +33,8 @@ func _on_inventory_changed() -> void:
 		slot.name = "Slot0"
 		add_child(slot, true)
 		slot.owner = owner
+		if not Engine.is_editor_hint() and inventory.items[i]:
+			inventory.items[i] = inventory.items[i].instantiate()
 
 
 func _enter_tree() -> void:

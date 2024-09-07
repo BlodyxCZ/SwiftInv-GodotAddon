@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventorySlot.gd" id="1_iw5u5"]
 
-[node name="InventorySlot" type="TextureRect"]
+[node name="InventorySlot" type="TextureRect" node_paths=PackedStringArray("amount_label")]
 custom_minimum_size = Vector2(100, 100)
 offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 3
 script = ExtResource("1_iw5u5")
+hover_time = 0.1
+amount_label = NodePath("AmountLabel")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -19,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="AmountLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
