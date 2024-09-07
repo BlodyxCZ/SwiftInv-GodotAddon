@@ -9,7 +9,7 @@
 - WIP
 
 ## Info
-Simple inventory plugin for Godot Engine 4.1 and newer (made using 4.4-dev1)
+Simple inventory addon for Godot Engine 4.1 and newer (made using 4.4-dev1)
 
 ## Features
 - Lots of Drag and Drop features.
@@ -18,7 +18,7 @@ Simple inventory plugin for Godot Engine 4.1 and newer (made using 4.4-dev1)
 - Example scenes to understand the basics (video tutorial coming soon
 
 ## Documentation
-- Already included in the addon! Open your editor refference docs and search for Inventory nodes and resources (Inventory, InventoryItem, InventorySlot, InventoryContainer)
+- Already included in the addon! Open your editor reference docs and search for Inventory nodes and resources (Inventory, InventoryItem, InventorySlot, InventoryContainer)
 
 ## WIP
 - Video tutorials (2.1)
