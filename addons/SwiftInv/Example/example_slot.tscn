@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2inajmo8ahsj"]
+
+[ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventorySlot.gd" id="1_iw5u5"]
+
+[node name="InventorySlot" type="TextureRect"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+script = ExtResource("1_iw5u5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
