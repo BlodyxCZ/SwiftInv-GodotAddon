@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://dutal5tj0u2tu"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://dutal5tj0u2tu"]
 
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryItem.gd" id="1_2ns23"]
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/Inventory.gd" id="2_chqws"]
+[ext_resource type="Resource" uid="uid://ucv4e76wnmxg" path="res://addons/SwiftInv/Example/item2.tres" id="2_h6qg7"]
+[ext_resource type="Resource" uid="uid://u1cay0b5vr1k" path="res://addons/SwiftInv/Example/item1.tres" id="3_k6e0l"]
 
 [resource]
 script = ExtResource("2_chqws")
-items = Array[ExtResource("1_2ns23")]([null, null, null, null, null, null])
+items = Array[ExtResource("1_2ns23")]([null, ExtResource("2_h6qg7"), ExtResource("3_k6e0l"), ExtResource("2_h6qg7"), null, ExtResource("2_h6qg7")])

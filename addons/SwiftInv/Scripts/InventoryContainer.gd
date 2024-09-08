@@ -10,7 +10,6 @@ class_name InventoryContainer extends GridContainer
 		inventory.changed.connect(_on_inventory_changed)
 		
 @export var slot_scene: PackedScene
-@export var info_node: InventoryInfo
 
 
 func _process(_delta: float) -> void:
