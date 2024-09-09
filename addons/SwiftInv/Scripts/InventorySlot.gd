@@ -3,6 +3,7 @@
 @tool @icon("res://addons/SwiftInv/Icons/InventorySlot.svg")
 class_name InventorySlot extends TextureRect
 
+signal slot_changed()
 
 @export_group("Properties")
 ## Size of drag preview in pixels.
@@ -29,6 +30,7 @@ var index: int:
 	set(value):
 		if get_parent() is InventoryContainer:
 			get_parent().inventory.items[index] = value
+			slot_changed.emit()
 	get():
 		if not get_parent() is InventoryContainer: return null
 		return get_parent().inventory.items[index]
@@ -82,7 +84,6 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		else:
 			data["base_slot"].item = null
 			item.amount = combined
-	print("saved")
 	ResourceSaver.save(data["base_slot"].get_parent().inventory)
 	ResourceSaver.save(get_parent().inventory)
 

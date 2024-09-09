@@ -28,9 +28,10 @@ func _on_inventory_changed() -> void:
 		slot.name = "Slot0"
 		add_child(slot, true)
 		slot.owner = owner
+		slot.slot_changed.connect(inventory.save)
 		if not Engine.is_editor_hint() and inventory.items[i]:
 			inventory.items[i] = inventory.items[i].instantiate()
-
+	ResourceSaver.save(inventory)
 
 func _enter_tree() -> void:
 	_on_inventory_changed()

@@ -8,7 +8,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 3
 script = ExtResource("1_iw5u5")
-hover_time = 0.1
 amount_label = NodePath("AmountLabel")
 
 [node name="Background" type="Panel" parent="."]
