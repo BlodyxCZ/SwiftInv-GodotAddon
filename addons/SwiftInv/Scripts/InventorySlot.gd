@@ -47,11 +47,7 @@ func update_slot() -> void:
 		if amount_label: amount_label.text = ""
 
 
-
 func _get_drag_data(at_position: Vector2) -> Variant:
-	if Engine.is_editor_hint():
-		# Can't allow drag in editor
-		return
 	if not item:
 		printerr("Slot does not have an Item")
 		return
@@ -66,14 +62,11 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return data
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	if Engine.is_editor_hint():
-		print(data)
-		return false
-	else:
-		if data is not Dictionary: return false
-		return true
+	if data is not Dictionary: return false
+	return true
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
+	if data["base_slot"] == self: return
 	if not item or not data["base_item"].name == item.name or item.amount == item.max_stack:
 		data["base_slot"].item = item
 		item = data["base_item"]
@@ -86,6 +79,9 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		else:
 			data["base_slot"].item = null
 			item.amount = combined
+	print("saved")
+	ResourceSaver.save(data["base_slot"].get_parent().inventory)
+	ResourceSaver.save(get_parent().inventory)
 
 func _get_preview() -> Control:
 	var preview_texture_rect = TextureRect.new()

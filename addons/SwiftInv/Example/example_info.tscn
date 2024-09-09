@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cropf7sr3sabs"]
+
+[ext_resource type="Script" path="res://addons/SwiftInv/Example/example_info.gd" id="1_6orjg"]
+
+[node name="InventoryInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 64.0
+script = ExtResource("1_6orjg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 72.0
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 32.0
+text = "ITEM NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 200.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 12
+text = "ITEM DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 56.0
