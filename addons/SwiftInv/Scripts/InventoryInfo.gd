@@ -1,18 +1,20 @@
+## Basic node for displaying tooltips of [InventoryItem]s.
 class_name InventoryInfo extends Control
 
-
-var hovered_slot:
+## Stores the currently hovered [Control] node.
+var hovered:
 	set(value):
-		hovered_slot = value
-		if hovered_slot is InventorySlot:
-			if hovered_slot.item:
+		hovered = value
+		if hovered is InventorySlot:
+			if hovered.item:
 				show()
-				hovered_item = hovered_slot.item
+				hovered_item = hovered.item
 			else:
 				hide()
 		else:
 			hide()
 
+## Stores the value of the most recently hovered [InventorySlot] with [InventoryItem].
 var hovered_item: InventoryItem:
 	set(value):
 		hovered_item = value
@@ -29,8 +31,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
-	hovered_slot = get_viewport().gui_get_hovered_control()
+	hovered = get_viewport().gui_get_hovered_control()
 
-
+## Use this method to assign [member hovered_item] values to other [Control] nodes.
 func on_info_changed() -> void:
 	pass

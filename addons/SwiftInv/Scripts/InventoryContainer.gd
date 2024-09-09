@@ -1,14 +1,14 @@
+## Basic container for [InventorySlot]s.
 @tool @icon("res://addons/SwiftInv/Icons/InventoryContainer.svg")
 class_name InventoryContainer extends GridContainer
 
-
-@export var autosafe: bool = true
-
+## The nodes [Inventory] resource.
 @export var inventory: Inventory:
 	set(value):
 		inventory = value
 		inventory.changed.connect(_on_inventory_changed)
-		
+
+## Defines what scene will be instantiated when changing [member Inventory.size].
 @export var slot_scene: PackedScene
 
 

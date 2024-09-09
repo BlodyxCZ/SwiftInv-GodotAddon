@@ -1,18 +1,20 @@
+## Basic class for displaying [InventoryItem]s. [br]
+## Do not add these into the scene manualy. (see [member Inventory.items])
 @tool @icon("res://addons/SwiftInv/Icons/InventorySlot.svg")
 class_name InventorySlot extends TextureRect
 
 
 @export_group("Properties")
-## Size in pixels of drag preview
+## Size of drag preview in pixels.
 @export var drag_preview_size: int = 30
+## Whether the [InventorySlot] updates itself every [method MainLoop._process] frame.
 @export var auto_update: bool = true
-@export var hover_time: float = 2.0
 
 @export_group("Nodes")
-## Displays [member InventoryItem.amount]
+## Displays [member InventoryItem.amount].
 @export var amount_label: Label
 
-## The Slots order in [InventoryContainer]
+## The nodes order in [InventoryContainer].
 var index: int:
 	set(value):
 		pass
@@ -20,7 +22,7 @@ var index: int:
 		return get_index()
 
 @export_group("")
-## Directly changes and displays [InventoryItem] in it's parents [Inventory] [br]
+## Directly changes and displays [InventoryItem] in it's parents [Inventory]. [br]
 ## (PS: this variables SetGet sometimes throws this error, don't bother with it XD): [br]
 ## [color=bf3030]   editor/editor_data.cpp:1214 - Condition "!p_node->is_inside_tree()" is true.
 @export var item: InventoryItem:
@@ -32,8 +34,9 @@ var index: int:
 		return get_parent().inventory.items[index]
 
 
-## Updates [member texture_rect] and [member amount_label] [br]
-## Called with [method Node._process] by if [member auto_update] is [code]true[/code]
+## Updates [member texture_rect] and [member amount_label]. [br]
+## Called with [method Node._process] by if [member auto_update] is [code]true[/code].
+## If you want to chane how the updating is handled, override this function.
 func update_slot() -> void:
 	if item:
 		texture = item.texture
