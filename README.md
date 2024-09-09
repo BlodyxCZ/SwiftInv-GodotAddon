@@ -12,15 +12,14 @@
 Simple inventory addon for Godot Engine 4.1 and newer (made using 4.4-dev1)
 
 ## Features
-- Lots of Drag and Drop features.
+- Drag and Drop features.
 - Real time updating and saving.
 - Editor preview. (using @tool keyword -> erase it to disable)
-- Example scenes to understand the basics (video tutorial coming soon
+- Example scenes to understand the basics (video tutorial WIP)
 
 ## Documentation
-- Already included in the addon! Open your editor reference docs and search for Inventory nodes and resources (Inventory, InventoryItem, InventorySlot, InventoryContainer)
+- Already included in the addon! Open your editor reference docs and search for Inventory nodes and resources (Inventory, InventoryItem, InventorySlot, InventoryContainer, InventoryInfo)
 
 ## WIP
-- Video tutorials (2.1)
-- Hover info
+- Video tutorials
 - More in editor documentation
