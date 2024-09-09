@@ -1,4 +1,5 @@
-## Basic node for displaying tooltips of [InventoryItem]s.
+## Basic node for displaying tooltips of [InventoryItem]s. [br]
+## Make sure the children nodes are offset from the origin (0, 0). ([InventoryInfo] may flicker otherwise)
 class_name InventoryInfo extends Control
 
 ## Stores the currently hovered [Control] node.
