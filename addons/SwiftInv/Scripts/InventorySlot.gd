@@ -36,6 +36,16 @@ var index: int:
 		return get_parent().inventory.items[index]
 
 
+## Write down expressions in the form of a [String]. [br]
+## All items must return [code]true[/code] in order to allow the user to drop data.
+@export var filters: Array[String] #TODO: fix static array issue
+
+
+## This variables use is intended for use in [member filters] only. [br]
+## Any other uses may not work correctly.
+var dragged_item: InventoryItem
+
+
 ## Updates [member texture_rect] and [member amount_label]. [br]
 ## Called with [method Node._process] by if [member auto_update] is [code]true[/code].
 ## If you want to chane how the updating is handled, override this function.
@@ -50,6 +60,20 @@ func update_slot() -> void:
 	else:
 		texture = null
 		if amount_label: amount_label.text = ""
+
+
+func are_filters_valid() -> bool:
+	for filter in filters:
+		var _expression: Expression = Expression.new()
+		var error = _expression.parse(filter)
+		if error == OK:
+			print("Trying filter: %s, result: %s" % [filter, _expression.execute([], self)])
+			if not _expression.execute([], self):
+				return false
+		else:
+			printerr("Invalid expression: %s" % filter)
+			return false
+	return true
 
 
 func _get_drag_data(at_position: Vector2) -> Variant:
@@ -67,8 +91,8 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	return data
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
-	if data is not Dictionary: return false
-	return true
+	dragged_item = data["base_item"]
+	return are_filters_valid() and data is Dictionary
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	if data["base_slot"] == self: return

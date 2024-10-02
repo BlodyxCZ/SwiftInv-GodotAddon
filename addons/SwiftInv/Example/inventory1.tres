@@ -1,12 +1,23 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=9 format=3 uid="uid://b5lkntseu5set"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryItem.gd" id="1_xcexd"]
 [ext_resource type="Script" path="res://addons/SwiftInv/Scripts/Inventory.gd" id="2_f8pcw"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6cbd"]
+size = Vector2(50, 50)
+
+[sub_resource type="Resource" id="Resource_5jwft"]
+script = ExtResource("1_xcexd")
+name = "Item2"
+description = "Stackable Item"
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+amount = 7
+max_stack = 24
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jo6ue"]
 size = Vector2(75, 75)
 
-[sub_resource type="Resource" id="Resource_aaxpw"]
+[sub_resource type="Resource" id="Resource_f0g7n"]
 script = ExtResource("1_xcexd")
 name = "Item1"
 description = "Unstackable Item"
@@ -14,10 +25,7 @@ texture = SubResource("PlaceholderTexture2D_jo6ue")
 amount = 1
 max_stack = 1
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6cbd"]
-size = Vector2(50, 50)
-
-[sub_resource type="Resource" id="Resource_nuf5v"]
+[sub_resource type="Resource" id="Resource_mn7ml"]
 script = ExtResource("1_xcexd")
 name = "Item2"
 description = "Stackable Item"
@@ -25,15 +33,7 @@ texture = SubResource("PlaceholderTexture2D_m6cbd")
 amount = 7
 max_stack = 24
 
-[sub_resource type="Resource" id="Resource_v3nfm"]
-script = ExtResource("1_xcexd")
-name = "Item2"
-description = "Stackable Item"
-texture = SubResource("PlaceholderTexture2D_m6cbd")
-amount = 7
-max_stack = 24
-
-[sub_resource type="Resource" id="Resource_5jkai"]
+[sub_resource type="Resource" id="Resource_nc64s"]
 script = ExtResource("1_xcexd")
 name = "Item2"
 description = "Stackable Item"
@@ -43,4 +43,4 @@ max_stack = 24
 
 [resource]
 script = ExtResource("2_f8pcw")
-items = Array[ExtResource("1_xcexd")]([SubResource("Resource_aaxpw"), null, SubResource("Resource_nuf5v"), null, SubResource("Resource_v3nfm"), SubResource("Resource_5jkai")])
+items = Array[ExtResource("1_xcexd")]([SubResource("Resource_5jwft"), null, null, SubResource("Resource_f0g7n"), SubResource("Resource_mn7ml"), SubResource("Resource_nc64s")])

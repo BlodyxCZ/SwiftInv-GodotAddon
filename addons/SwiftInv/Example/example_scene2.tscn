@@ -1,0 +1,215 @@
+[gd_scene load_steps=19 format=3 uid="uid://cwqmgapush3gd"]
+
+[ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryContainer.gd" id="1_t8hkw"]
+[ext_resource type="Resource" uid="uid://btwd8sgga7aar" path="res://addons/SwiftInv/Example/inventory1.tres" id="2_uaufq"]
+[ext_resource type="PackedScene" uid="uid://d2inajmo8ahsj" path="res://addons/SwiftInv/Example/example_slot.tscn" id="3_lv8h1"]
+[ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventorySlot.gd" id="4_teal7"]
+[ext_resource type="Script" path="res://addons/SwiftInv/Scripts/InventoryItem.gd" id="5_qhony"]
+[ext_resource type="Resource" uid="uid://kq5tkat1lpyy" path="res://addons/SwiftInv/Example/inventory2.tres" id="6_ky3pq"]
+[ext_resource type="PackedScene" uid="uid://cropf7sr3sabs" path="res://addons/SwiftInv/Example/example_info.tscn" id="7_7itgo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6cbd"]
+size = Vector2(50, 50)
+
+[sub_resource type="Resource" id="Resource_r0tek"]
+script = ExtResource("5_qhony")
+name = "Item2"
+description = "Stackable Item"
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+amount = 7
+max_stack = 24
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jo6ue"]
+size = Vector2(75, 75)
+
+[sub_resource type="Resource" id="Resource_36mj3"]
+script = ExtResource("5_qhony")
+name = "Item1"
+description = "Unstackable Item"
+texture = SubResource("PlaceholderTexture2D_jo6ue")
+amount = 1
+max_stack = 1
+
+[sub_resource type="Resource" id="Resource_wt1s4"]
+script = ExtResource("5_qhony")
+name = "Item2"
+description = "Stackable Item"
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+amount = 7
+max_stack = 24
+
+[sub_resource type="Resource" id="Resource_w1btw"]
+script = ExtResource("5_qhony")
+name = "Item2"
+description = "Stackable Item"
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+amount = 7
+max_stack = 24
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wmksh"]
+size = Vector2(50, 50)
+
+[sub_resource type="Resource" id="Resource_d32xn"]
+script = ExtResource("5_qhony")
+name = "Item2"
+description = "Stackable Item"
+texture = SubResource("PlaceholderTexture2D_wmksh")
+amount = 7
+max_stack = 24
+
+[sub_resource type="Resource" id="Resource_ywyhy"]
+script = ExtResource("5_qhony")
+name = "Item2"
+description = "Stackable Item"
+texture = SubResource("PlaceholderTexture2D_wmksh")
+amount = 7
+max_stack = 24
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fagdd"]
+size = Vector2(75, 75)
+
+[sub_resource type="Resource" id="Resource_smdhd"]
+script = ExtResource("5_qhony")
+name = "Item1"
+description = "Unstackable Item"
+texture = SubResource("PlaceholderTexture2D_fagdd")
+amount = 1
+max_stack = 1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="InventoryContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 224.0
+offset_right = 484.0
+offset_bottom = 428.0
+columns = 3
+script = ExtResource("1_t8hkw")
+inventory = ExtResource("2_uaufq")
+slot_scene = ExtResource("3_lv8h1")
+
+[node name="Slot0" type="TextureRect" parent="InventoryContainer" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot1" type="TextureRect" parent="InventoryContainer" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_r0tek")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot2" type="TextureRect" parent="InventoryContainer" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot3" type="TextureRect" parent="InventoryContainer" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_jo6ue")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_36mj3")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot4" type="TextureRect" parent="InventoryContainer" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_wt1s4")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot5" type="TextureRect" parent="InventoryContainer" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_m6cbd")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_w1btw")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="InventoryContainer2" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 229.0
+offset_right = 964.0
+offset_bottom = 433.0
+columns = 3
+script = ExtResource("1_t8hkw")
+inventory = ExtResource("6_ky3pq")
+slot_scene = ExtResource("3_lv8h1")
+
+[node name="Slot0" type="TextureRect" parent="InventoryContainer2" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot1" type="TextureRect" parent="InventoryContainer2" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot2" type="TextureRect" parent="InventoryContainer2" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_wmksh")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_d32xn")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot3" type="TextureRect" parent="InventoryContainer2" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot4" type="TextureRect" parent="InventoryContainer2" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_wmksh")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_ywyhy")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="Slot5" type="TextureRect" parent="InventoryContainer2" node_paths=PackedStringArray("amount_label") instance=ExtResource("3_lv8h1")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_fagdd")
+stretch_mode = 3
+script = ExtResource("4_teal7")
+amount_label = NodePath("AmountLabel")
+item = SubResource("Resource_smdhd")
+filters = Array[String](["dragged_item.name == 'Item2'"])
+
+[node name="InventoryInfo" parent="." instance=ExtResource("7_7itgo")]
