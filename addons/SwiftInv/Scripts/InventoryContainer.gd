@@ -12,11 +12,6 @@ class_name InventoryContainer extends GridContainer
 @export var slot_scene: PackedScene
 
 
-func _process(delta: float) -> void:
-	for slot: InventorySlot in get_children():
-		if slot.auto_update: slot.update_slot()
-
-
 func _on_inventory_changed() -> void:
 	if not slot_scene:
 		printerr("No slot scene defined")
@@ -28,7 +23,7 @@ func _on_inventory_changed() -> void:
 		slot.name = "Slot0"
 		add_child(slot, true)
 		slot.owner = owner
-		slot.slot_changed.connect(inventory.save)
+		slot.slot_updated.connect(inventory.save)
 		if not Engine.is_editor_hint() and inventory.items[i]:
 			inventory.items[i] = inventory.items[i].instantiate()
 	ResourceSaver.save(inventory)

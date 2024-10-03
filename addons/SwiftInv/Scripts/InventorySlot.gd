@@ -3,7 +3,9 @@
 @tool @icon("res://addons/SwiftInv/Icons/InventorySlot.svg")
 class_name InventorySlot extends TextureRect
 
-signal slot_changed()
+## Emitted when [method update_slot] is called. [br]
+## (only when [member item] changed by default)
+signal slot_updated()
 
 @export_group("Properties")
 ## Size of drag preview in pixels.
@@ -30,15 +32,15 @@ var index: int:
 	set(value):
 		if get_parent() is InventoryContainer:
 			get_parent().inventory.items[index] = value
-			slot_changed.emit()
+			update_slot()
 	get():
 		if not get_parent() is InventoryContainer: return null
 		return get_parent().inventory.items[index]
 
 
-## Write down expressions in the form of a [String]. [br]
-## All items must return [code]true[/code] in order to allow the user to drop data.
-@export var filters: Array[String] #TODO: fix static array issue
+## Write down expression in the form of a [String]. [br]
+## If the expressions return true, you can drop currently dragged data into it.
+@export_multiline var filters: String = ""
 
 
 ## This variables use is intended for use in [member filters] only. [br]
@@ -46,9 +48,13 @@ var index: int:
 var dragged_item: InventoryItem
 
 
+func _ready() -> void:
+	update_slot()
+
+
 ## Updates [member texture_rect] and [member amount_label]. [br]
-## Called with [method Node._process] by if [member auto_update] is [code]true[/code].
-## If you want to chane how the updating is handled, override this function.
+## Called with [method Node._process] by if [member auto_update] is [code]true[/code]. [br]
+## If you want to change how the updating is handled, override this function.
 func update_slot() -> void:
 	if item:
 		texture = item.texture
@@ -60,20 +66,18 @@ func update_slot() -> void:
 	else:
 		texture = null
 		if amount_label: amount_label.text = ""
+	slot_updated.emit()
 
 
 func are_filters_valid() -> bool:
-	for filter in filters:
-		var _expression: Expression = Expression.new()
-		var error = _expression.parse(filter)
-		if error == OK:
-			print("Trying filter: %s, result: %s" % [filter, _expression.execute([], self)])
-			if not _expression.execute([], self):
-				return false
-		else:
-			printerr("Invalid expression: %s" % filter)
-			return false
-	return true
+	if not filters: return true
+	var _expression: Expression = Expression.new()
+	var error = _expression.parse(filters)
+	if error == OK:
+		return _expression.execute([], self)
+	else:
+		printerr("Invalid expression: %s" % filters)
+		return false
 
 
 func _get_drag_data(at_position: Vector2) -> Variant:
@@ -108,8 +112,8 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		else:
 			data["base_slot"].item = null
 			item.amount = combined
-	ResourceSaver.save(data["base_slot"].get_parent().inventory)
-	ResourceSaver.save(get_parent().inventory)
+	update_slot()
+	data["base_slot"].update_slot()
 
 func _get_preview() -> Control:
 	var preview_texture_rect = TextureRect.new()

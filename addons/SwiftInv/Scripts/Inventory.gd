@@ -92,6 +92,7 @@ func is_slot_empty(index: int) -> bool:
 func has_item(item: InventoryItem) -> bool:
 	return items.has(item)
 
-## Call to manualy save the resource as autosaving is not always perfect.
+## Call to manualy save the resource. [br]
+## Also see [ResourceSaver].
 func save() -> void:
 	ResourceSaver.save(self)

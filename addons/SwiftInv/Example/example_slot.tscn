@@ -9,6 +9,7 @@ offset_bottom = 40.0
 stretch_mode = 3
 script = ExtResource("1_iw5u5")
 amount_label = NodePath("AmountLabel")
+filters = Array[String](["dragged_item.name == \"Item2\""])
 
 [node name="Background" type="Panel" parent="."]
 show_behind_parent = true
